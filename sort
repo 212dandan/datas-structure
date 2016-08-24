@@ -1,0 +1,110 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"sort.h"
+
+int count = 0;
+void swap(int *p1, int *p2)   //&a  &b交换两个数的值
+{
+	int tmp;
+	tmp = *p1;
+	*p1 = *p2;
+	*p2 = tmp;
+}
+
+void exchange_sort(int *arr, int n)//交换排序
+                            //将第一个元素与其后的每个元素比较，从小到大排序
+{
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			//count++;
+			if (arr[i] > arr[j])
+			{
+				swap(&arr[i], &arr[j]);
+			}
+		}
+	}
+}
+
+
+void bubble_sort(int *arr, int n)
+{
+	bool flag = true;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < n - 1 - i; j++)
+		{
+		//	count++;
+			if (arr[j] > arr[j + 1])
+			{
+				swap(&arr[j], &arr[j + 1]);
+				flag = false;
+			}
+		}
+		if (flag)
+		{
+			break;
+		}
+		flag = true;
+	}
+}
+
+void select_sort(int *arr, int n)
+{
+	int min = arr[0];
+	int min_index = 0;
+	for (int i = 0; i < n - 1; i++)//将第一个元素当作最小的，使最小的和其余每个元素进行比较
+		                     //如果其余中有比第一元素更小的，一轮彻底比较完，进行交换
+		                    //最终前面的元素都是由小到大
+	{
+		min = arr[i];
+		min_index = i;
+		for (int j = i + 1; j < n; j++)
+		{
+			count++;
+			if (arr[j] < min)
+			{
+				min = arr[j];
+				min_index = j;
+			}
+		}
+		if (i != min_index)
+		{
+			swap(&arr[i], &arr[min_index]);
+		}
+	}
+}
+
+void shell_sort(int *arr, int n,int gap)
+{
+	int i;
+	int j;
+	int k;
+	int tmp;
+	for (int i = gap; i < n; i++)
+	{
+		tmp = arr[i];
+		for (j = i - gap; j >= 0; j -= gap)
+		{
+			if (arr[j] > tmp)
+			{
+				arr[j + gap] = arr[j];
+			}
+			else
+			{
+				break;
+			}
+		}
+		arr[j + gap] = tmp;
+	}
+}
+void Display(int *arr, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	
+}
