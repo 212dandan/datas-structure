@@ -25,6 +25,46 @@ void exchange_sort(int *arr, int n)//交换排序
 			}
 		}
 	}
+	#include"sort.h"
+#include<stdio.h>
+extern int count;
+int main()
+{
+	int a = 10;
+	int b = 90;
+	swap(&a, &b);
+	printf("a=%d,b=%d\n", a, b);
+	//****************************************
+
+	int arr[] = { 9,5,8,2,6,1 };
+	int n1 = sizeof(arr) / sizeof(arr[0]);
+	exchange_sort(arr, n1);
+	Display(arr, n1);
+	//printf("exchange.count=%d\n", count);
+	//****************************************
+
+	int brr[] = { 9,5,8,2,6,1 };
+	int n2 = sizeof(brr) / sizeof(brr[0]);
+	bubble_sort(brr, n2);
+	Display(brr,n2);
+	printf("bubble.count=%d\n", count);
+	//****************************************
+
+	int crr[] = { 9,5,8,2,6,1 };
+	int n3 = sizeof(crr) / sizeof(crr[0]);
+	select_sort(crr, n3);
+	Display(crr, n3);
+	printf("select.count=%d\n", count);
+	//****************************************
+
+	int drr[] = { 9,5,8,2,6,1 };
+	int n4 = sizeof(drr) / sizeof(drr[0]);
+	shell_sort(drr, n4, 3);
+	Display(drr, n4);
+	shell_sort(drr, n4, 1);
+	Display(drr, n4);
+	return 0;
+}
 }
 
 
